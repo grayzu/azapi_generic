@@ -30,7 +30,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 module "acr_task" {
-  source = "./modules/docker_task"
+  source = "git@github.com:grayzu/docker_task.git"
 
   registry_id   = azurerm_container_registry.acr.id
   context       = "https://github.com/Azure-Samples/aci-helloworld.git#master"
@@ -39,7 +39,7 @@ module "acr_task" {
 }
 
 module "container_app" {
-  source = "./modules/container_app"
+  source = "git@github.com:grayzu/container_app.git"
 
   resource_group = {
     id       = azurerm_resource_group.rg.id
